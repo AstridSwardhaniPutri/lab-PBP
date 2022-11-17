@@ -1,5 +1,10 @@
 import 'package:tappy/main.dart';
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:tappy/page/to_do_page.dart';
+import 'package:tappy/model/to_do.dart';
+
 
 class MyFormPage extends StatefulWidget {
   const MyFormPage({super.key});
@@ -31,7 +36,8 @@ class _MyFormPageState extends State<MyFormPage> {
         child: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.all(20.0),
-            child: Column(children: [
+            child: Column(
+                children: [
               Padding(
                 // Menggunakan padding sebesar 8 pixels
                 padding: const EdgeInsets.all(8.0),
@@ -175,6 +181,26 @@ class _MyFormPageState extends State<MyFormPage> {
                   },
                 ),
               ),
+                  ListTile(
+                    title: const Text('Form'),
+                    onTap: () {
+                      // Route menu ke halaman form
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const MyFormPage()),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('To Do'),
+                    onTap: () {
+                      // Route menu ke halaman to do
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const ToDoPage()),
+                      );
+                    },
+                  ),
               SwitchListTile(
                 title: const Text('Practice Mode'),
                 value: _nilaiSwitch,
@@ -250,3 +276,4 @@ class _MyFormPageState extends State<MyFormPage> {
     );
   }
 }
+
